@@ -1,22 +1,35 @@
-import React, {useState} from 'react';
-import { StyleSheet, Text, View, TextInput, FlatList, Button } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import React from 'react';
+import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons} from '@expo/vector-icons';  
-import {HomeScreen, SettingsScreen} from './Screens';
+import { AddPlayersScreen, GameScreen, Header } from './Screens';
+import { AntDesign, Ionicons } from '@expo/vector-icons';
+
+
+const MyTheme = {
+  dark: true,
+  colors: {
+    primary: 'rgb(255, 45, 85)',
+    background: '#d0e8f2',
+    card: 'rgb(255, 255, 255)',
+    text: 'rgb(28, 28, 30)',
+    border: 'rgb(199, 199, 204)',
+    notification: 'rgb(255, 69, 58)',
+  },
+};
+
 
 
 const screenOptions = ({ route }) => ({
-  tabBarIcon: ({ focused, color, size }) => {
-    let iconName;
+  tabBarIcon: ({ }) => {
 
-    if (route.name === 'Home') {
-      iconName = 'md-home';
-    } else if (route.name === 'Settings') {
-      iconName = 'md-settings';
+
+    if (route.name === 'Add players') {
+      return <AntDesign name="adduser" size={24} color="black" />
+    } else if (route.name === 'Game') {
+      return <Ionicons name="ios-game-controller-outline" size={24} color="black" />
     }
 
-    return <Ionicons name={iconName} size={size} color={color} />;
+
   }
 });
 
@@ -25,20 +38,14 @@ const screenOptions = ({ route }) => ({
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+  
   return (
-    <NavigationContainer>
-      <Tab.Navigator screenOptions={screenOptions}>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+    <NavigationContainer theme={MyTheme}>
+      <Tab.Navigator  screenOptions={screenOptions}>
+        <Tab.Screen name="Add players" component={AddPlayersScreen} />
+        <Tab.Screen name="Game" component={GameScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
 };
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
