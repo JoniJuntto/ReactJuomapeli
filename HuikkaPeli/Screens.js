@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, TextInput, FlatList, Button, TouchableOpacity, Image } from 'react-native';
 import { createTask } from './functions/taskFunction';
 import styles from './styles';
+import saannot from './kortti';
 
 export function AddPlayersScreen({ navigation }) {
 
@@ -107,12 +108,64 @@ export function GameScreen({ route, navigation }) {
 
 {/*TÄMÄ ON VAIN ESITTÄMÄSSÄ EROTUSTA KAHDEN SCREENIN VÄLILLÄ ETTEI MULLE TULE HÄMMENNYS MAXIMUS*/ }
 
-export function HitlerScreen({ route, navigation }) {
+export function HitlerScreen() {
 
-  const { list } = route.params;
+  const [deck, setDeck] = useState('');
+  const [cardValue, setCardValue] = useState('');
+  const [cardImage, setCardImage] = useState('https://images.alko.fi/images/cs_srgb,f_auto,t_large/cdn/792244/koff.jpg');
+  const [korttiTeksti, setKorttiTeksti] = useState('Aloita peli painamalla "Jaa kortti"')
+  const getDeck = async () => {
+  const url = 'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1';
+    
+    try {
+      const response = await fetch(url);
+      var data = await response.json();
+      setDeck(data.deck_id);
+      console.log('Deck created')
+    }catch (error){
+      console.log('error', error);
+    }
+    
+  }
+
+
+
+ 
+  useEffect(() => {getDeck()},[]);
+
+  const drawCard = async () => {
+    const url = 'https://deckofcardsapi.com/api/deck/' + deck + '/draw/?count=1';
+      
+      try {
+        const response = await fetch(url);
+        var data = await response.json();
+        console.log(data.remaining);
+        if (data.remaining>0){
+        setCardValue(data.cards[0].value);
+        setCardImage(data.cards[0].image)
+        }else{
+          console.log('kortit loppu')
+          Alert.alert("kortit loppu :(")
+        }
+      }catch (error){
+        console.log('error', error);
+      }
+      
+    }
 
   return(
-    <View></View>
+    <View style={styles.container}>
+      <Image
+        style={{
+          width: 350,
+          height: 350,
+          resizeMode: 'contain'}}
+        source={{
+          uri: cardImage,
+        }}/>
+        <Text style={styles.textStyles}>{korttiTeksti}</Text>
+        <Button onPress={drawCard} title='Jaa kortti'/>
+    </View>
   );
 
 

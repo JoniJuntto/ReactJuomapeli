@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { AddPlayersScreen, GameScreen, Header } from './Screens';
+import { AddPlayersScreen, GameScreen, HitlerScreen } from './Screens';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 
 
@@ -28,6 +28,9 @@ const screenOptions = ({ route }) => ({
     } else if (route.name === 'Game') {
       return <Ionicons name="ios-game-controller-outline" size={24} color="black" />
     }
+    else if (route.name==='Hitler'){
+      return <Ionicons name="ios-game-controller-outline" size={24} color="black" />
+    }
 
 
   }
@@ -44,6 +47,7 @@ export default function App() {
       <Tab.Navigator  screenOptions={screenOptions}>
         <Tab.Screen name="Add players" component={AddPlayersScreen} />
         <Tab.Screen name="Game" component={GameScreen} />
+        <Tab.Screen name='Hitler' component={HitlerScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
