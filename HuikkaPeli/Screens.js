@@ -133,16 +133,51 @@ export function HitlerScreen() {
  
   useEffect(() => {getDeck()},[]);
 
+  const getText = (card) =>{
+    if(card == "1"){
+      return "Kortti 1"
+    }else if(card == "2"){
+      return "Kortti 2"
+    }else if(card == "3"){
+      return "Kortti 3"
+    }else if(card == "4"){
+      return "Kortti 4"
+    }else if(card == "5"){
+      return "Kortti 5"
+    }else if(card == "6"){
+      return "Kortti 6"
+    }else if(card == "7"){
+      return "Kortti 7"
+    }else if(card == "8"){
+      return "Kortti 8"
+    }else if(card == "9"){
+      return "Kortti 9"
+    }else if(card == "10"){
+      return "Kortti 10"
+    }else if(card == "JACK"){
+      return "Kortti 11"
+    }else if(card == "QUEEN"){
+      return "Kortti 12"
+    }else if(card == "KING"){
+      return "Kortti 13"
+    }else if(card == "ACE"){
+      return "Kortti 14"
+    }
+  }
+
   const drawCard = async () => {
     const url = 'https://deckofcardsapi.com/api/deck/' + deck + '/draw/?count=1';
       
       try {
         const response = await fetch(url);
         var data = await response.json();
-        console.log(data.remaining);
+        console.log(data);
         if (data.remaining>0){
         setCardValue(data.cards[0].value);
         setCardImage(data.cards[0].image)
+        const teksti = getText(data.cards[0].value);
+        setKorttiTeksti(teksti);
+        
         }else{
           console.log('kortit loppu')
           Alert.alert("kortit loppu :(")
