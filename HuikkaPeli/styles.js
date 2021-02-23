@@ -60,7 +60,7 @@ export default StyleSheet.create({
     peliStyle:{
       alignItems: 'center',
       justifyContent: 'center',
-      marginTop: 50
+      marginTop: 10
     },
     imageStyle:{
     width:400,
@@ -89,7 +89,7 @@ export default StyleSheet.create({
       borderStyle: 'solid',
 
     },
-    navigateContainer:{
+    navigateContainer1:{
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
@@ -100,8 +100,22 @@ export default StyleSheet.create({
 
     },
     taskText:{
-      marginLeft:30,
-      marginRight:30,
-    }
+      marginTop: 20,
+      marginLeft:10,
+      marginRight:10,
+      width: 300,
+      height: 500,
+      fontSize: 30
+    },
+    tvtNav:{
+      borderRadius:1,
+      marginLeft: 30,
+      borderStyle: 'solid',
+    },
+    navigateContainer2:{
+      marginTop: 50,
+      
+    },
+
     
   });

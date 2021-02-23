@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
-import { AddPlayersScreen, GameScreen, HitlerScreen, NavScreen } from './Screens';
+import { AddPlayersScreen, GameScreen, HitlerScreen, NavScreen, TOT } from './Screens';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -19,22 +19,7 @@ const MyTheme = {
 
 
 
-const screenOptions = ({ route }) => ({
-  tabBarIcon: ({ }) => {
 
-
-    if (route.name === 'Add players') {
-      return <AntDesign name="adduser" size={24} color="black" />
-    } else if (route.name === 'Game') {
-      return <Ionicons name="ios-game-controller-outline" size={24} color="black" />
-    }
-    else if (route.name==='Hitler'){
-      return <Ionicons name="ios-game-controller-outline" size={24} color="black" />
-    }
-
-
-  }
-});
 
 
 const Stack = createStackNavigator();
@@ -43,11 +28,12 @@ export default function App() {
   
   return (
     <NavigationContainer theme={MyTheme}>
-      <Stack.Navigator  screenOptions={screenOptions}>
+      <Stack.Navigator  >
         <Stack.Screen name="Add Players" component={AddPlayersScreen} />
         <Stack.Screen name="Game" component={GameScreen} />
         <Stack.Screen name='Hitler' component={HitlerScreen} />
         <Stack.Screen name='Navi' component={NavScreen}/>
+        <Stack.Screen name="TotuusVaiTehtävä" component={TOT}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
