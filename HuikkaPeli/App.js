@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { AddPlayersScreen, GameScreen, HitlerScreen } from './Screens';
+import { AddPlayersScreen, GameScreen, HitlerScreen, NavScreen } from './Screens';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
+import { createStackNavigator } from '@react-navigation/stack';
 
 
 const MyTheme = {
@@ -37,18 +37,18 @@ const screenOptions = ({ route }) => ({
 });
 
 
-
-const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 export default function App() {
   
   return (
     <NavigationContainer theme={MyTheme}>
-      <Tab.Navigator  screenOptions={screenOptions}>
-        <Tab.Screen name="Add players" component={AddPlayersScreen} />
-        <Tab.Screen name="Game" component={GameScreen} />
-        <Tab.Screen name='Hitler' component={HitlerScreen} />
-      </Tab.Navigator>
+      <Stack.Navigator  screenOptions={screenOptions}>
+        <Stack.Screen name="Add Players" component={AddPlayersScreen} />
+        <Stack.Screen name="Game" component={GameScreen} />
+        <Stack.Screen name='Hitler' component={HitlerScreen} />
+        <Stack.Screen name='Navi' component={NavScreen}/>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };

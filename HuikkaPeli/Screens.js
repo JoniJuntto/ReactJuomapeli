@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, TextInput, FlatList, Button, TouchableOpacity, Image } from 'react-native';
 import { createTask } from './functions/taskFunction';
 import styles from './styles';
-import saannot from './kortti';
+import { AntDesign } from '@expo/vector-icons'; 
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { Entypo } from '@expo/vector-icons'; 
+
+
 
 export function AddPlayersScreen({ navigation }) {
 
@@ -36,19 +40,18 @@ export function AddPlayersScreen({ navigation }) {
         <Image style={styles.imageStyle} source={require('./pics/Huikkapullo.png')} />
       </View>
 
-      <View style={styles.laatikko}>
-
+     
       <View style={styles.inputFields}>
-        <Text style={styles.textStyles}>Lisää pelaaja</Text>
         <TextInput style={styles.addPlayerInputStyle} onChangeText={text => setPelaaja(text)} value={pelaaja} />
+        <AntDesign name="pluscircleo" size={24} color="black" onPress={addPlayer} style={{marginTop:30, marginLeft: 10}}/>
+        
       </View>
 
       <View style= {styles.buttonContainer}>
-        <CustomButton onPress={addPlayer}>Lisää pelaaja</CustomButton>
-        <CustomButton onPress={() => navigation.navigate('Game', { list: data })}>Pelaajat lisätty</CustomButton>
+      <AntDesign name="login" size={50} style={{marginTop: 20}} color="black" onPress={() => navigation.navigate('Navi', { list: data })}/>
       </View>
 
-      </View>
+      
 
       <View style={styles.lista}>
         <Text style={styles.textStyles}>Lisätty on jo</Text>
@@ -69,9 +72,9 @@ export function GameScreen({ route, navigation }) {
   const [textOnScreen, setTextOnScreen] = useState('');
 
   const makeDraw = () => {
-    setRandomPlayer(list[Math.floor(Math.random() * list.length)]);
-    setRandomTask(createTask);
-    setTextOnScreen(randomPlayer.key + ' ' + randomTask)
+    var randomPlayer= list[Math.floor(Math.random() * list.length)];
+    var randomTask = createTask();
+    setTextOnScreen(randomPlayer + ' ' + randomTask)
 
     if(buttonUseText == "Aloita"){
       setButtonUseText("Uusi tehtävä")
@@ -100,7 +103,7 @@ export function GameScreen({ route, navigation }) {
       <Image style={{width:400, height:210, resizeMode: 'contain', marginTop: 40 }} source={require('./pics/Huikkapullo.png')} />
       <View style={styles.peliStyle}>
         <CustomButton style={{marginBottom:40}} onPress={makeDraw} >{buttonUseText}</CustomButton>
-        <Text style={styles.textStyles}>{textOnScreen}</Text>
+        <Text style={styles.taskText}>{textOnScreen}</Text>
       </View>
     </View>
   );
@@ -112,7 +115,7 @@ export function HitlerScreen() {
 
   const [deck, setDeck] = useState('');
   const [cardValue, setCardValue] = useState('');
-  const [cardImage, setCardImage] = useState('https://images.alko.fi/images/cs_srgb,f_auto,t_large/cdn/792244/koff.jpg');
+  const [cardImage, setCardImage] = useState('https://www.nicepng.com/png/detail/68-682542_free-ancient-playing-card-symbol-gr-dan-club.png');
   const [korttiTeksti, setKorttiTeksti] = useState('Aloita peli painamalla "Jaa kortti"')
   const getDeck = async () => {
   const url = 'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1';
@@ -128,40 +131,35 @@ export function HitlerScreen() {
     
   }
 
-
-
- 
   useEffect(() => {getDeck()},[]);
 
   const getText = (card) =>{
-    if(card == "1"){
-      return "Kortti 1"
+    if(card == "ACE"){
+      return "Anna 3"
     }else if(card == "2"){
-      return "Kortti 2"
+      return "Ota 3"
     }else if(card == "3"){
-      return "Kortti 3"
+      return "123"
     }else if(card == "4"){
-      return "Kortti 4"
+      return "HITLER"
     }else if(card == "5"){
-      return "Kortti 5"
+      return "HITLER"
     }else if(card == "6"){
-      return "Kortti 6"
+      return "Kategoria"
     }else if(card == "7"){
-      return "Kortti 7"
+      return "Vesiputous"
     }else if(card == "8"){
-      return "Kortti 8"
+      return "Sääntö"
     }else if(card == "9"){
-      return "Kortti 9"
+      return "Riimi"
     }else if(card == "10"){
-      return "Kortti 10"
+      return "Kysymysmestari"
     }else if(card == "JACK"){
-      return "Kortti 11"
+      return "Taukokortti"
     }else if(card == "QUEEN"){
-      return "Kortti 12"
+      return "Huora"
     }else if(card == "KING"){
-      return "Kortti 13"
-    }else if(card == "ACE"){
-      return "Kortti 14"
+      return "Tarina"
     }
   }
 
@@ -208,3 +206,24 @@ export function HitlerScreen() {
 
 
 {/*TÄMÄ ON VAIN ESITTÄMÄSSÄ EROTUSTA KAHDEN JUTTUJUTUN VÄLILLÄ ETTEI MULLE TULE HÄMMENNYS MAXIMUS*/ }
+
+export function NavScreen({route, navigation}) {
+
+  const {list} = route.params;
+
+  return(
+    <View style={styles.navigateContainer}>
+
+      <View style={styles.hitlerNav}>
+        <Text style={styles.NavText}  onPress={() => navigation.navigate('Hitler', { list: list })}>Korttipeli</Text>
+        <MaterialCommunityIcons name="cards" size={100} color="black" onPress={() => navigation.navigate('Hitler', { list: list })}/>
+      </View>
+
+      <View style={styles.taskNav}>
+        <Text style={styles.NavText} onPress={() => navigation.navigate('Game', { list: list })}>Huikkapeli</Text>
+        <Entypo name="drink" size={100} color="black" onPress={() => navigation.navigate('Game', { list: list })} />
+      </View>
+
+    </View>
+  );
+}

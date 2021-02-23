@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { Dimensions } from 'react-native';
 
 export default StyleSheet.create({
     container: {
@@ -10,11 +11,11 @@ export default StyleSheet.create({
   
     button: {
       backgroundColor: '#79a3b1',
-      paddingVertical: 12,
-      paddingHorizontal: 24,
-      width: 150,
-      borderRadius: 25,
-      margin:10,
+      paddingVertical: 10,
+      marginTop: 30,
+      width: 100,
+      borderRadius: 10,
+      margin:5,
       alignItems: 'center',
       justifyContent: 'center',
       
@@ -22,17 +23,15 @@ export default StyleSheet.create({
   
     buttonText: {
       color: 'black',
-      fontSize: 18,
+      fontSize: 15,
     },
     buttonContainer:{
-      alignItems: 'center',
       justifyContent: 'center',
-      flexDirection: 'row',
-      marginBottom:20
+      alignItems: 'center',
     },
     inputFields:{
-      flexDirection: 'column',
-      marginTop: 20,
+      flexDirection: 'row',
+      marginTop: 10,
       alignItems: 'center',
       justifyContent: 'center',
       marginBottom: 10,
@@ -74,6 +73,35 @@ export default StyleSheet.create({
     borderColor: 'gray', 
     borderWidth: 1, 
     marginTop:30,
+    marginLeft: 25
+    },
+    hitlerNav:{
+      borderRadius:1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginRight: 30,
+    },
+    taskNav:{
+      borderRadius:1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginLeft: 30,
+      borderStyle: 'solid',
+
+    },
+    navigateContainer:{
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: 30,
+    },
+    NavText:{
+      fontSize: 30,
+
+    },
+    taskText:{
+      marginLeft:30,
+      marginRight:30,
     }
     
   });
