@@ -1,8 +1,11 @@
 import React from 'react';
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
-import { AddPlayersScreen, GameScreen, HitlerScreen, NavScreen, TOT } from './Screens';
-import { AntDesign, Ionicons } from '@expo/vector-icons';
+import { NavigationContainer} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import AddPlayersScreen from './components/AddPlayerScreen';
+import GameScreen from './components/GameScreen';
+import HitlerScreen from './components/HitlerScreen';
+import NavScreen from './components/NavScreen';
+import TOT from './components/TOT';
 
 
 const MyTheme = {
@@ -28,7 +31,7 @@ export default function App() {
   
   return (
     <NavigationContainer theme={MyTheme}>
-      <Stack.Navigator  >
+      <Stack.Navigator>
         <Stack.Screen name="Add Players" component={AddPlayersScreen} />
         <Stack.Screen name="Game" component={GameScreen} />
         <Stack.Screen name='Hitler' component={HitlerScreen} />

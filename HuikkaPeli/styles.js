@@ -73,7 +73,7 @@ export default StyleSheet.create({
     borderColor: 'gray', 
     borderWidth: 1, 
     marginTop:30,
-    marginLeft: 25
+    marginLeft: 95
     },
     hitlerNav:{
       borderRadius:1,
@@ -116,6 +116,9 @@ export default StyleSheet.create({
       marginTop: 50,
       
     },
+    playerListAdd:{
+      flexDirection: 'row',
+    }
 
     
   });
