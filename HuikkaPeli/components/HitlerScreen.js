@@ -10,7 +10,7 @@ export default function HitlerScreen() {
 
   const [deck, setDeck] = useState('');
   const [cardValue, setCardValue] = useState('');
-  const [cardImage, setCardImage] = useState('https://www.nicepng.com/png/detail/68-682542_free-ancient-playing-card-symbol-gr-dan-club.png');
+  const [cardImage, setCardImage] = useState('https://simpleicon.com/wp-content/uploads/loading_1.png');
   const [korttiTeksti, setKorttiTeksti] = useState('Aloita peli painamalla "Jaa kortti"')
   const getDeck = async () => {
     const url = 'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1';
@@ -19,7 +19,6 @@ export default function HitlerScreen() {
       const response = await fetch(url);
       var data = await response.json();
       setDeck(data.deck_id);
-      console.log('Deck created')
     } catch (error) {
       console.log('error', error);
     }
@@ -64,7 +63,6 @@ export default function HitlerScreen() {
     try {
       const response = await fetch(url);
       var data = await response.json();
-      console.log(data);
       if (data.remaining > 0) {
         setCardValue(data.cards[0].value);
         setCardImage(data.cards[0].image)

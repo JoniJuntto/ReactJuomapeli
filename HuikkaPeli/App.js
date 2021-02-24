@@ -6,6 +6,7 @@ import GameScreen from './components/GameScreen';
 import HitlerScreen from './components/HitlerScreen';
 import NavScreen from './components/NavScreen';
 import TOT from './components/TOT';
+import StartingScreen from './components/StartingScreen';
 
 
 const MyTheme = {
@@ -32,11 +33,12 @@ export default function App() {
   return (
     <NavigationContainer theme={MyTheme}>
       <Stack.Navigator>
-        <Stack.Screen name="Add Players" component={AddPlayersScreen} />
+        <Stack.Screen name='Aloitus' component={StartingScreen}/>
+        <Stack.Screen name="Lisää pelaajia" component={AddPlayersScreen} />
         <Stack.Screen name="Game" component={GameScreen} />
         <Stack.Screen name='Hitler' component={HitlerScreen} />
-        <Stack.Screen name='Navi' component={NavScreen}/>
-        <Stack.Screen name="TotuusVaiTehtävä" component={TOT}/>
+        <Stack.Screen name='Valikko' component={NavScreen}/>
+        <Stack.Screen name="Totuudet" component={TOT}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

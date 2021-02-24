@@ -23,7 +23,7 @@ export const truths = () => {
         "What would be in your web history that you’d be embarrassed if someone saw?",
         "Have you ever tried to take a sexy picture of yourself?",
         "Who is the sexiest person in this game?",
-        "Would you rather have sex with Jiki11 in secret or not have sex with that person, but everyone thinks you did?",
+        "Would you rather have sex with Päivi Räsänen in secret or not have sex with that person, but everyone thinks you did?",
         "What was the last thing you texted?",
         "If you were rescuing people from a burning building and you had to leave one person behind from this room, who would it be?",
         "Do you think you'll marry your current girlfriend/boyfriend?",

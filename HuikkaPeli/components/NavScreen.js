@@ -25,8 +25,8 @@ export default function NavScreen({navigation}) {
       </View>
       <View style={styles.navigateContainer2}>
         <View style={styles.tvtNav}>
-          <Text style={styles.NavText} onPress={() => navigation.navigate('TotuusVaiTehtävä')}>Totuudet</Text>
-          <FontAwesome5 name="theater-masks" size={100} color="black" onPress={() => navigation.navigate('TotuusVaiTehtävä')} />
+          <Text style={styles.NavText} onPress={() => navigation.navigate('Totuudet')}>Totuudet</Text>
+          <FontAwesome5 name="theater-masks" size={100} color="black" onPress={() => navigation.navigate('Totuudet')} />
         </View>
       </View>
     </View>

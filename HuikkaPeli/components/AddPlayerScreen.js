@@ -57,7 +57,7 @@ export default function AddPlayersScreen({ navigation }) {
       <View style={styles.inputFields}>
         <TextInput style={styles.addPlayerInputStyle} onChangeText={text => setPelaaja(text)} value={pelaaja} />
         <AntDesign name="pluscircleo" size={34} color="black" onPress={pressed} style={{ marginTop: 30, marginLeft: 10 }} />
-        <AntDesign name="login" size={34} style={{ marginTop: 30, marginLeft: 30 }} color="black" onPress={() => navigation.navigate('Navi')} />
+        <AntDesign name="login" size={34} style={{ marginTop: 30, marginLeft: 30 }} color="black" onPress={() => navigation.navigate('Valikko')} />
       </View>
 
       <View style={styles.buttonContainer}>

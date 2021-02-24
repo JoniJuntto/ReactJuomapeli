@@ -22,7 +22,6 @@ export default function GameScreen({ navigation }) {
   useEffect(() => {getPlayerList();}, []);
 
   const makeDraw = () => {
-    console.log(playerList);
     var randomPlayer = playerList[Math.floor(Math.random() * playerList.length)];
     var randomTask = createTask();
     setTextOnScreen(randomPlayer.nimi + ' ' + randomTask)

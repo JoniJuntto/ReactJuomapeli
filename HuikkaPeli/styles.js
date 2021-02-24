@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { Dimensions } from 'react-native';
 
 export default StyleSheet.create({
     container: {
@@ -39,7 +38,7 @@ export default StyleSheet.create({
     },
     textStyles:{
       color: 'black',
-      fontSize: 30,
+      fontSize: 25,
       
     },
     lista:{
@@ -118,6 +117,23 @@ export default StyleSheet.create({
     },
     playerListAdd:{
       flexDirection: 'row',
+    },
+    StartTextHead:{
+      alignItems:'center',
+      justifyContent:'center',
+      fontSize: 30,
+      marginBottom: 30,
+    },
+    StartTextBread:{
+      justifyContent: 'center',
+      alignItems:'center',
+    },
+    StartScreenButtons:{
+      justifyContent:'center',
+      alignItems:'center',
+      marginTop: 180,
+      flexDirection:'row',
+
     }
 
     
