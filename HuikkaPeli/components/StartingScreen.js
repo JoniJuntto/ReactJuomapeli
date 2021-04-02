@@ -1,27 +1,56 @@
-import React, {useState} from 'react';
-import { Text, View, TextInput, FlatList, Button, TouchableOpacity, Image } from 'react-native';
+import React, { useCallback, useEffect, useRef } from 'react';
+import { Text, View, Linking, Image } from 'react-native';
 import styles from '../styles';
-import { FontAwesome } from '@expo/vector-icons'; 
+import { FontAwesome } from '@expo/vector-icons';
+import { Button, SocialIcon } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import LottieView from 'lottie-react-native';
 
-export default function StartingScreen({navigation}){
-    return(
+
+export default function StartingScreen({ navigation }) {
+
+    const url = "https://github.com/JoniJuntto/ReactJuomapeli/tree/main/HuikkaPeli";
+
+    const handlePress = useCallback(async () => {
+        // Checking if the link is supported for links with custom URL scheme.
+        const supported = await Linking.canOpenURL(url);
+
+        if (supported) {
+            // Opening the link with some app, if the URL scheme is "http" the web link should be opened
+            // by some browser in the mobile
+            await Linking.openURL(url);
+        } else {
+            Alert.alert(`Don't know how to open this URL: ${url}`);
+        }
+    }, [url]);
+
+    return (
         <View >
-            <View style={styles.StartTextHead}>
-                <Text style={{fontSize: 40}}>Tervetuloa</Text>
-                <Text style={{fontSize: 20}}>Käyttöehdot</Text>
+            <View>
+                <Image style={styles.imageStyle} source={require('../assets/lapinakuvataustalogo.png')} />
             </View>
-            <View style={styles.StartTextBread}>
-                <Text style={{marginBottom: 10, marginLeft:10, marginRight:10}}>Peli sisältää yhtenä aihepiirinä alkoholin, joten se on kielletty alle 18-vuotialta</Text>
-                <Text style={{marginBottom: 10, marginLeft:10, marginRight:10}}>Peli on tällä hetkellä beta testauksessa, jonka vuoksi pelissä saattaa olla kiintoisia vikoja</Text>
-                <Text style={{marginBottom: 10, marginLeft:10, marginRight:10}}>Pelin tekijä ei ota minkäänlaista vastuuta, siitä miten peliä käytetään, tai mihin pelaaminen johtaa</Text>
+
+            <View style={{ marginTop: 10 }}>
+                <Button
+                    titleStyle={{ color: 'white', fontSize: 30 }}
+                    icon={<Icon style={{ marginLeft: 10 }} name="arrow-right" size={25} color="white" />}
+                    iconRight
+                    type='clear'
+                    title="Pelaamaan"
+                    onPress={() => navigation.navigate("Lisää pelaajia")}
+                />
             </View>
-            <View style={styles.StartScreenButtons}>
-                <Text style={{fontSize:20, marginRight:20}} onPress={() => navigation.navigate("Lisää pelaajia")}>Hyväksyn</Text>
-                <FontAwesome name="thumbs-o-up" size={24} color="black" />
-            </View>
-            <View style={{justifyContent:'center', alignItems:'center'}}>
-                <Text style={{marginTop: 160}}>Made by Huikka</Text>
+            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={{ marginTop: 190, color: 'white' }}>Made by Huikka</Text>
+                <SocialIcon
+                    style={{ width: 350, marginTop: 10 }}
+                    title='GitHub-repo'
+                    button
+                    light
+                    type='github'
+                    onPress={handlePress}
+                />
             </View>
         </View>
     );
-}  
+}

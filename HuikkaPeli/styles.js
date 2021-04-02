@@ -34,10 +34,12 @@ export default StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       marginBottom: 10,
+      color:'white',
+      marginRight:60
       
     },
     textStyles:{
-      color: 'black',
+      color: 'white',
       fontSize: 25,
       
     },
@@ -68,11 +70,12 @@ export default StyleSheet.create({
     },
     addPlayerInputStyle:{
     height: 40,
-    width:'30%', 
-    borderColor: 'gray', 
+    width:'40%', 
+    borderColor: 'white', 
     borderWidth: 1, 
     marginTop:30,
-    marginLeft: 95
+    marginLeft: 95,
+    color:'white'
     },
     hitlerNav:{
       borderRadius:1,
@@ -96,15 +99,16 @@ export default StyleSheet.create({
     },
     NavText:{
       fontSize: 30,
+      color:'white',
 
     },
     taskText:{
-      marginTop: 20,
       marginLeft:10,
       marginRight:10,
       width: 300,
       height: 500,
-      fontSize: 30
+      fontSize: 30,
+      color:'white'
     },
     tvtNav:{
       borderRadius:1,

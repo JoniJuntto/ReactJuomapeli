@@ -13,7 +13,7 @@ const MyTheme = {
   dark: true,
   colors: {
     primary: 'rgb(255, 45, 85)',
-    background: '#d0e8f2',
+    background: 'black',
     card: 'rgb(255, 255, 255)',
     text: 'rgb(28, 28, 30)',
     border: 'rgb(199, 199, 204)',

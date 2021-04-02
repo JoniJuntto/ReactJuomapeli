@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, TextInput, FlatList, Button, TouchableOpacity, Image } from 'react-native';
+import { Text, View, TextInput, FlatList, TouchableOpacity, Image } from 'react-native';
 import styles from '../styles';
 import { AntDesign } from '@expo/vector-icons';
 import * as SQLite from 'expo-sqlite';
+import { Button } from 'react-native-elements';
+
 
 const db = SQLite.openDatabase('players.db');
 
@@ -36,9 +38,9 @@ export default function AddPlayersScreen({ navigation }) {
   }
 
   const deleteAll = () => {
-    db.transaction(tx =>{
+    db.transaction(tx => {
       tx.executeSql('delete from players');
-        updateList();
+      updateList();
     })
   }
 
@@ -50,28 +52,37 @@ export default function AddPlayersScreen({ navigation }) {
   return (
     <View>
       <View style={{ alignItems: 'center', justifyContent: 'center', }}>
-        <Image style={styles.imageStyle} source={require('../pics/Huikkapullo.png')} />
+        <Image style={styles.imageStyle} source={require('../assets/lapinakuvataustalogo.png')} />
       </View>
 
 
       <View style={styles.inputFields}>
         <TextInput style={styles.addPlayerInputStyle} onChangeText={text => setPelaaja(text)} value={pelaaja} />
-        <AntDesign name="pluscircleo" size={34} color="black" onPress={pressed} style={{ marginTop: 30, marginLeft: 10 }} />
-        <AntDesign name="login" size={34} style={{ marginTop: 30, marginLeft: 30 }} color="black" onPress={() => navigation.navigate('Valikko')} />
+        <AntDesign name="pluscircleo" size={34} color="white" onPress={pressed} style={{ marginTop: 30, marginLeft: 10 }} />
       </View>
 
       <View style={styles.buttonContainer}>
-        
+
       </View>
 
 
 
       <View style={styles.lista}>
         <View style={styles.playerListAdd}>
-        <Text style={styles.textStyles}>Pelaajat</Text>
-        <AntDesign style={{marginTop: 0, marginLeft:20}} name="deleteusergroup" size={40} color="black" onPress={deleteAll} />
+          <Text style={styles.textStyles}>Pelaajat</Text>
+          <AntDesign style={{ marginTop: 0, marginLeft: 20 }} name="deleteusergroup" size={40} color="white" onPress={deleteAll} />
         </View>
-        <FlatList data={playerList} renderItem={({ item }) => <Text style={styles.textStyles}>{item.nimi}</ Text>} />
+        <View style={{justifyContent: 'center', alignItems:'center'}}>
+          <FlatList style={{width:300, marginLeft:150, maxHeight:100}} data={playerList} renderItem={({ item }) => <Text style={styles.textStyles}>{item.nimi}</ Text>} />
+        </View>
+  </View>
+      <View style={{alignItems:'center', justifyContent:'center'}}>
+      <Button
+                    titleStyle={{ color: 'white', fontSize: 20 }}
+                    type='solid'
+                    title="Pelaajat lisätty!"
+                    onPress={() => navigation.navigate('Valikko')}
+                />
       </View>
 
 

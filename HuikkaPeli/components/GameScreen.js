@@ -3,6 +3,7 @@ import { Text, View, TextInput, FlatList, Button, TouchableOpacity, Image } from
 import { createTask } from '../functions/taskFunction';
 import styles from '../styles';
 import * as SQLite from 'expo-sqlite';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 const db = SQLite.openDatabase('players.db');
 
@@ -51,8 +52,10 @@ export default function GameScreen({ navigation }) {
   return (
     <View>
       <View style={styles.peliStyle}>
-        <Text style={styles.taskText}>{textOnScreen}</Text>
-        <CustomButton style={{ marginBottom: 40 }} onPress={makeDraw} >{buttonUseText}</CustomButton>
+      <Image style={styles.imageStyle} source={require('../assets/lapinakuvataustalogo.png')} />
+      <MaterialCommunityIcons style={{marginBottom:20}} name="autorenew" size={40} color="#e817e8"  onPress={makeDraw}/>
+      <Text style={styles.taskText}>{textOnScreen}</Text>
+        
       </View>
     </View>
   );

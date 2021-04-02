@@ -20,7 +20,7 @@ export default function TOT({ navigation }) {
 
   return (
     <View style={{alignItems: 'center', justifyContent: 'center', marginTop: 50}}>
-    <Text style={{width: 300, height: 400,fontSize: 30, marginLeft:40, marginRight: 40,}}>{totuus}</Text>
+    <Text style={{width: 300, height: 400,fontSize: 30, marginLeft:40, marginRight: 40, color:'white'}}>{totuus}</Text>
     <Button style={{marginTop: 50}} onPress={getTotuus} title={buttonUseText} />
     </View>
   );
