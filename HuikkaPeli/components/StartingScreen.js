@@ -44,9 +44,9 @@ export default function StartingScreen({ navigation }) {
                 <Text style={{ marginTop: 190, color: 'white' }}>Made by Huikka</Text>
                 <SocialIcon
                     style={{ width: 350, marginTop: 10 }}
-                    title='GitHub-repo'
+                    title='GitHub'
                     button
-                    light
+                    
                     type='github'
                     onPress={handlePress}
                 />
