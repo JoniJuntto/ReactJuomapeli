@@ -12,9 +12,9 @@ import StartingScreen from './components/StartingScreen';
 const MyTheme = {
   dark: true,
   colors: {
-    primary: 'rgb(255, 45, 85)',
+    primary: '#bd06d1',
     background: 'black',
-    card: 'purple',
+    card: '#8a0099',
     text: 'rgb(28, 28, 30)',
     border: 'rgb(199, 199, 204)',
     notification: 'rgb(255, 69, 58)',

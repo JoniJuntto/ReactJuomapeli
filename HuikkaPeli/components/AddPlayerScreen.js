@@ -6,6 +6,7 @@ import * as SQLite from 'expo-sqlite';
 import { Button } from 'react-native-elements';
 
 
+
 const db = SQLite.openDatabase('players.db');
 
 
@@ -57,7 +58,7 @@ export default function AddPlayersScreen({ navigation }) {
 
 
       <View style={styles.inputFields}>
-        <TextInput style={styles.addPlayerInputStyle} onChangeText={text => setPelaaja(text)} value={pelaaja} />
+        <TextInput style={styles.addPlayerInputStyle} onChangeText={text => setPelaaja(text)} value={pelaaja} keyboardType='ascii-capable' />
         <AntDesign name="pluscircleo" size={34} color="white" onPress={pressed} style={{ marginTop: 30, marginLeft: 10 }} />
       </View>
 
@@ -72,17 +73,21 @@ export default function AddPlayersScreen({ navigation }) {
           <Text style={styles.textStyles}>Pelaajat</Text>
           <AntDesign style={{ marginTop: 0, marginLeft: 20 }} name="deleteusergroup" size={40} color="white" onPress={deleteAll} />
         </View>
-        <View style={{justifyContent: 'center', alignItems:'center'}}>
-          <FlatList style={{width:300, marginLeft:150, maxHeight:100}} data={playerList} renderItem={({ item }) => <Text style={styles.textStyles}>{item.nimi}</ Text>} />
+        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+          <FlatList style={{ width: 300, marginLeft: 150, maxHeight: 100 }} data={playerList} renderItem={({ item }) => <Text style={styles.textStyles}>{item.nimi}</ Text>} />
         </View>
-  </View>
-      <View style={{alignItems:'center', justifyContent:'center'}}>
-      <Button
-                    titleStyle={{ color: 'white', fontSize: 20 }}
-                    type='solid'
-                    title="Pelaajat lisätty!"
-                    onPress={() => navigation.navigate('Valikko')}
-                />
+      </View>
+      <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+        <Button
+          titleStyle={{ color: '#bd06d1', fontSize: 20 }}
+          type='outline'
+          title="Pelaajat lisätty!"
+          onPress={() => navigation.navigate('Valikko')}
+          buttonStyle={{
+            borderColor: "#bd06d1"
+         }}
+          
+        />
       </View>
 
 

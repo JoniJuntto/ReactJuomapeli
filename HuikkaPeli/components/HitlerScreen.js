@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, TextInput, FlatList, Button, TouchableOpacity, Image } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import styles from '../styles';
 import * as SQLite from 'expo-sqlite';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 const db = SQLite.openDatabase('players.db');
 
@@ -11,7 +12,7 @@ export default function HitlerScreen() {
   const [deck, setDeck] = useState('');
   const [cardValue, setCardValue] = useState('');
   const [cardImage, setCardImage] = useState('https://simpleicon.com/wp-content/uploads/loading_1.png');
-  const [korttiTeksti, setKorttiTeksti] = useState('Aloita peli painamalla "Jaa kortti"')
+  const [korttiTeksti, setKorttiTeksti] = useState('Aloita peli painamalla')
   const getDeck = async () => {
     const url = 'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1';
 
@@ -91,7 +92,7 @@ export default function HitlerScreen() {
           uri: cardImage,
         }} />
       <Text style={styles.textStyles}>{korttiTeksti}</Text>
-      <Button onPress={drawCard} title='Jaa kortti' />
+      <MaterialCommunityIcons style={{marginBottom:20}} name="autorenew" size={40} color="#e817e8"  onPress={drawCard}/>
     </View>
   );
 

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Text, View, TextInput, FlatList, Button, TouchableOpacity, Image } from 'react-native';
+import { Text, View} from 'react-native';
 import { truths } from '../functions/truths';
 import * as SQLite from 'expo-sqlite';
+import {Button} from 'react-native-elements';
 
 const db = SQLite.openDatabase('players.db');
 
@@ -21,7 +22,16 @@ export default function TOT({ navigation }) {
   return (
     <View style={{alignItems: 'center', justifyContent: 'center', marginTop: 50}}>
     <Text style={{width: 300, height: 400,fontSize: 30, marginLeft:40, marginRight: 40, color:'white'}}>{totuus}</Text>
-    <Button style={{marginTop: 50}} onPress={getTotuus} title={buttonUseText} />
+    <Button
+          titleStyle={{ color: '#bd06d1', fontSize: 20 }}
+          type='outline'
+          title={buttonUseText}
+          onPress={getTotuus}
+          buttonStyle={{
+            borderColor: "#bd06d1"
+         }}
+          
+        />
     </View>
   );
 }
