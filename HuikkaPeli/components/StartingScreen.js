@@ -4,7 +4,6 @@ import styles from '../styles';
 import { FontAwesome } from '@expo/vector-icons';
 import { Button, SocialIcon } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import LottieView from 'lottie-react-native';
 
 
 export default function StartingScreen({ navigation }) {
