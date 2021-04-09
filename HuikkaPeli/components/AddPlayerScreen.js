@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, TextInput, FlatList, TouchableOpacity, Image } from 'react-native';
+import { Text, View, TextInput, FlatList, Image, Keyboard } from 'react-native';
 import styles from '../styles';
 import { AntDesign } from '@expo/vector-icons';
 import * as SQLite from 'expo-sqlite';
@@ -14,6 +14,7 @@ export default function AddPlayersScreen({ navigation }) {
 
   const [pelaaja, setPelaaja] = useState('');
   const [playerList, setPlayerList] = useState([]);
+
 
   useEffect(() => {
     db.transaction(tx => {
@@ -48,6 +49,7 @@ export default function AddPlayersScreen({ navigation }) {
   const pressed = () => {
     saveItem();
     updateList();
+    Keyboard.dismiss();
   }
 
   return (
@@ -71,17 +73,17 @@ export default function AddPlayersScreen({ navigation }) {
       <View style={styles.lista}>
         <View style={styles.playerListAdd}>
           <Text style={styles.textStyles}>Pelaajat</Text>
-          <AntDesign style={{ marginTop: 0, marginLeft: 20 }} name="deleteusergroup" size={40} color="white" onPress={deleteAll} />
+          <AntDesign style={{ marginTop: 0, marginLeft: 20 }} name="deleteusergroup" size={40} color="red" onPress={deleteAll} />
         </View>
         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-          <FlatList style={{ width: 300, marginLeft: 150, maxHeight: 100 }} data={playerList} renderItem={({ item }) => <Text style={styles.textStyles}>{item.nimi}</ Text>} />
+          <FlatList style={{ width: 300, maxHeight: 100, textAlign:'center' }} data={playerList} renderItem={({ item }) => <Text style={styles.textStyles}>{item.nimi}</ Text>} />
         </View>
       </View>
-      <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ alignItems: 'center', justifyContent: 'center', marginTop:60 }}>
         <Button
           titleStyle={{ color: '#bd06d1', fontSize: 20 }}
           type='outline'
-          title="Pelaajat lisätty!"
+          title="Pelaamaan!"
           onPress={() => navigation.navigate('Valikko')}
           buttonStyle={{
             borderColor: "#bd06d1"

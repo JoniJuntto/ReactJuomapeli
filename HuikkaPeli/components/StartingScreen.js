@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback } from 'react';
 import { Text, View, Linking, Image } from 'react-native';
 import styles from '../styles';
 import { FontAwesome } from '@expo/vector-icons';
@@ -7,6 +7,21 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 export default function StartingScreen({ navigation }) {
+
+    const onSwipePerformed = (action) => {
+        
+
+        switch(action){
+            case 'left':{
+                () =>navigation.navigate("Lisää pelaajia")
+              break;
+            }
+             default : {
+             console.log('Undeteceted action');
+             }
+          }
+    }
+    
 
     const url = "https://github.com/JoniJuntto/ReactJuomapeli/tree/main/HuikkaPeli";
 
@@ -25,6 +40,7 @@ export default function StartingScreen({ navigation }) {
 
     return (
         <View >
+            
             <View>
                 <Image style={styles.imageStyle} source={require('../assets/lapinakuvataustalogo.png')} />
             </View>
@@ -45,7 +61,6 @@ export default function StartingScreen({ navigation }) {
                     style={{ width: 350, marginTop: 10 }}
                     title='GitHub'
                     button
-                    
                     type='github'
                     onPress={handlePress}
                 />

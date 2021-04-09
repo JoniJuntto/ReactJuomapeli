@@ -4,13 +4,14 @@ import { createTask } from '../functions/taskFunction';
 import styles from '../styles';
 import * as SQLite from 'expo-sqlite';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const db = SQLite.openDatabase('players.db');
 
 export default function GameScreen({ navigation }) {
   
   const [playerList, setPlayerList] = useState([]);
-  const [textOnScreen, setTextOnScreen] = useState('');
+  const [textOnScreen, setTextOnScreen] = useState('Aloita napauttamalla näyttöä');
 
   const getPlayerList = () => {
     db.transaction(tx => {
@@ -39,14 +40,13 @@ export default function GameScreen({ navigation }) {
 
   return (
     <View>
+      <TouchableOpacity onPress={makeDraw}>
       <View style={styles.peliStyle}>
       <Image style={styles.imageStyle} source={require('../assets/lapinakuvataustalogo.png')} />
-        <Pressable onPress={makeDraw}>
-          <MaterialCommunityIcons style={{marginBottom:20}} name="autorenew" size={40} color="#e817e8"  onPress={makeDraw}/>
-        </Pressable>
       <Text style={styles.taskText}>{textOnScreen}</Text>
         
       </View>
+      </TouchableOpacity>
     </View>
   );
 };

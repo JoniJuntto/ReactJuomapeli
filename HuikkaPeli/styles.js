@@ -41,6 +41,7 @@ export default StyleSheet.create({
     textStyles:{
       color: 'white',
       fontSize: 25,
+      textAlign:'center'
       
     },
     lista:{
@@ -103,12 +104,12 @@ export default StyleSheet.create({
 
     },
     taskText:{
-      marginLeft:10,
-      marginRight:10,
       width: 300,
       height: 500,
       fontSize: 30,
-      color:'white'
+      color:'white',
+      textAlign:'center'
+      
     },
     tvtNav:{
       borderRadius:1,
@@ -138,6 +139,10 @@ export default StyleSheet.create({
       marginTop: 180,
       flexDirection:'row',
 
+    },
+    swipesGestureContainer:{
+      height:'100%',
+      width:'100%'
     }
 
     

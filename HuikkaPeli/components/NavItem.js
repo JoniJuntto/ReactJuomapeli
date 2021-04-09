@@ -2,6 +2,7 @@ import React from 'react';
 import {Image, useWindowDimensions, StyleSheet, View, Text } from 'react-native';
 import { Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 function NavItem({item}) {
 
@@ -18,16 +19,10 @@ function NavItem({item}) {
                 <Text style={styles.title}>{item.title}</Text>
                 <Text style={styles.description}>{item.description}</Text>
             </View>
-            <Button 
-                onPress={onButtonPress}
-                titleStyle={{ color: '#bd06d1', fontSize: 20 }}
-                type='outline'
-                buttonStyle={{
-                    borderColor: "#bd06d1"
-                 }}
-                 title={item.buttonText}
-                />
-            <Image source={item.image} style={[styles.image, {width, resizeMode:'contain'}]}/>
+            
+            <TouchableOpacity style={styles.image}  onPress={onButtonPress}>
+                <Image source={item.image} style={{width, resizeMode:'contain'}}/>
+            </TouchableOpacity>
 
         </View>
     );
@@ -43,7 +38,7 @@ const styles = StyleSheet.create( {
     image:{
         flex: 0.7,
         justifyContent:'center',
-        height: 90
+        marginTop:160
     },
     title:{
         fontWeight:'800',
@@ -51,12 +46,14 @@ const styles = StyleSheet.create( {
         marginBottom: 10,
         color: '#493d8a',
         textAlign:'center',
+        marginTop:20
     },
     description:{
         fontWeight: '300',
         color: '#62656b',
         textAlign: 'center',
         paddingHorizontal: 64,
+        fontSize: 18
     }
 });
 
