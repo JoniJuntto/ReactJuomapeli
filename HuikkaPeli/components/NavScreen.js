@@ -1,34 +1,50 @@
-import React, { useState, useEffect } from 'react';
-import { Text, View, TextInput, FlatList, Button, TouchableOpacity, Image } from 'react-native';
-import styles from '../styles';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Entypo } from '@expo/vector-icons';
-import { FontAwesome5 } from '@expo/vector-icons';
+import React, { useState, useRef } from 'react';
+import { View, TextInput, FlatList, Image, StyleSheet, Animated } from 'react-native';
+import slides from './slides';
+import NavItem from './NavItem';
 
 
-export default function NavScreen({navigation}) {
+export default function NavScreen({ navigation }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const scrollX = useRef(new Animated.Value(0)).current;
+  const slidesRef = useRef(null);
+
+  const viewableItemsChanged = useRef(({ viewableItems }) => {
+    setCurrentIndex(viewableItems[0].index);
+  }).current;
+
+  const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
 
   return (
-    <View>
-      <View style={styles.navigateContainer1}>
-
-        <View style={styles.hitlerNav}>
-          <Text style={styles.NavText} onPress={() => navigation.navigate('Hitler')}>Korttipeli</Text>
-          <MaterialCommunityIcons name="cards" size={100} color="white" onPress={() => navigation.navigate('Hitler')} />
-        </View>
-
-        <View style={styles.taskNav}>
-          <Text style={styles.NavText} onPress={() => navigation.navigate('Game')}>Huikkapeli</Text>
-          <Entypo name="drink" size={100} color="white" onPress={() => navigation.navigate('Game')} />
-        </View>
-
-      </View>
-      <View style={styles.navigateContainer2}>
-        <View style={styles.tvtNav}>
-          <Text style={styles.NavText} onPress={() => navigation.navigate('Totuudet')}>Totuudet</Text>
-          <FontAwesome5 name="theater-masks" size={100} color="white" onPress={() => navigation.navigate('Totuudet')} />
-        </View>
+    <View style={styles.container}>
+      <View style={{ flex: 3 }}>
+        <FlatList
+          horizontal={true}
+          data={slides}
+          renderItem={({ item }) => <NavItem item={item}
+            showsHorizontalScrollIndicator
+            pagingEnabled
+            bounces={false}
+            keyExtractor={(item) => item.id}
+            onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollX } } }], {
+              useNativeDriver: false,
+            })}
+            scrollEventThrottle={32}
+            onViewableItemsChanged={viewableItemsChanged}
+            viewabilityConfig={viewConfig}
+            ref={slidesRef}
+          />}
+        />
       </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+})
