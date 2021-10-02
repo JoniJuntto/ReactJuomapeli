@@ -7,6 +7,7 @@ import HitlerScreen from './components/HitlerScreen';
 import NavScreen from './components/NavScreen';
 import TOT from './components/TOT';
 import StartingScreen from './components/StartingScreen';
+import StraightFace from './components/StraightFace';
 
 
 const MyTheme = {
@@ -39,6 +40,7 @@ export default function App() {
         <Stack.Screen name='Hitler' component={HitlerScreen} />
         <Stack.Screen name='Valikko' component={NavScreen}/>
         <Stack.Screen name="Totuudet" component={TOT}/>
+        <Stack.Screen name="Face" component={StraightFace}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

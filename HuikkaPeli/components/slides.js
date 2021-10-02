@@ -23,4 +23,11 @@ export default [
         press:"Totuudet",
         buttonText:'Peliin!'
     },
+    {
+        id:'4',
+        title:'Straight face',
+        description: 'Yritä pitää naama peruslukemilla, jos hymyilet tai naurat Ebo lyö sua peppuun!',
+        press: "Face",
+        buttonText: "Peliin!"
+    }
 ]
